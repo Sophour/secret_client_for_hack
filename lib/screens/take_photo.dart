@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:travel_hack_client/main.dart';
-import 'package:travel_hack_client/screens/scan_barcode.dart';
 
 class StartScreen extends StatelessWidget{
 
@@ -10,7 +9,7 @@ class StartScreen extends StatelessWidget{
   Widget build( BuildContext context ) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Начало работы'),
+        title: Text('Управление фотоаппаратом'),
 
       ),
       body: new Container(
@@ -21,13 +20,13 @@ class StartScreen extends StatelessWidget{
                   side: BorderSide(color: Colors.red)
               ),
               child: new Text(
-                'Нажмите, чтобы начать работу',
+                'Сделать фото',
                 style: Theme.of(context).textTheme.title,),
               onPressed: ()=>onStartButtonTap(context)
           ),
         ),
       ),
-      );
+    );
 
   }
 
@@ -60,7 +59,5 @@ class StartScreen extends StatelessWidget{
     );
   }
 
-//  _onLocationTap(BuildContext context, int locationID){
-//    Navigator.pushNamed(context, LocationDetailRoute, arguments: {"id" : locationID});
-//  }
+
 }
