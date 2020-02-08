@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_hack_client/main.dart';
 
-class StartScreen extends StatelessWidget{
+class TakePhotoScreen extends StatelessWidget{
 
   //final locations = Location.fetchAll();
 
@@ -22,7 +22,7 @@ class StartScreen extends StatelessWidget{
               child: new Text(
                 'Сделать фото',
                 style: Theme.of(context).textTheme.title,),
-              onPressed: ()=>onStartButtonTap(context)
+              onPressed: ()=>onTakePhotoButtonTap(context)
           ),
         ),
       ),
@@ -31,8 +31,8 @@ class StartScreen extends StatelessWidget{
   }
 
 
-  onStartButtonTap(BuildContext context){
-    Navigator.pushNamed(context, ScanBarcodeRoute);
+  onTakePhotoButtonTap(BuildContext context){
+    Navigator.pushNamed(context, PreviewPhotoRoute);
   }
 
 
