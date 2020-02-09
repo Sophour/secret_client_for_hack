@@ -4,13 +4,13 @@ const LargeTextSize = 26.0;
 const MediumTextSize = 20.0;
 const BodyTextSize = 16.0;
 
-const String FontNameDefault = 'Poppins';
+const String FontNameDefault = 'Century Gothic';
 
 const AppBarTextStyle = TextStyle(
   fontFamily: FontNameDefault,
-  fontWeight: FontWeight.w300,
+  fontWeight: FontWeight.w600,
   fontSize: MediumTextSize,
-  color: Colors.white,
+  color: Colors.black87,
 );
 
 const TitleTextStyle = TextStyle(

@@ -4,15 +4,22 @@ import 'screens/start_work.dart';
 import 'screens/scan_barcode.dart';
 import 'screens/take_photo.dart';
 import 'screens/photo_prewiew.dart';
+import 'constants.dart';
 
 const StartScreenRoute = '/';
 const ScanBarcodeRoute = '/scan_barcode';
 const TakePhotoRoute = '/take_photo';
 const PreviewPhotoRoute = '/photo_preview';
 
-void main() => runApp(MyApp());
+void main() {
+
+  const MainServerUrl="";
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class MyApp extends StatelessWidget {
 
   RouteFactory _routes(){
     return (settings){
-      final Map<String,dynamic> arguments = settings.arguments;
+      //final Map<String,dynamic> arguments = settings.arguments;
       Widget screen;
 
       switch(settings.name){
@@ -52,6 +59,8 @@ class MyApp extends StatelessWidget {
 
   ThemeData _theme(){
     return ThemeData( appBarTheme: AppBarTheme(
+      color: Colors.grey[300],
+      elevation: 0.0,
       textTheme: TextTheme(title: AppBarTextStyle),
     ),
       textTheme: TextTheme(
@@ -60,4 +69,5 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
 }

@@ -2,30 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:travel_hack_client/main.dart';
 import 'package:travel_hack_client/screens/scan_barcode.dart';
 
-class StartScreen extends StatelessWidget{
+class StartScreen2 extends StatelessWidget{
+
+  bool darkMode = false;
+  //final locations = Location.fetchAll();
 
   @override
   Widget build( BuildContext context ) {
-    return StartScreenWidget();
+    return StartScreenWidget2();
   }
 
 }
 
-class StartScreenWidget extends StatefulWidget {
+class StartScreenWidget2 extends StatefulWidget {
   @override
-  _StartScreenWidgetState createState() => _StartScreenWidgetState();
+  _StartScreenWidget2State createState() => _StartScreenWidget2State();
 }
 
-class _StartScreenWidgetState extends State<StartScreenWidget> {
+class _StartScreenWidget2State extends State<StartScreenWidget2> {
 
-  //bool darkMode = false;
+  bool darkMode = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.grey[300],
+      backgroundColor: darkMode ? Colors.grey[850] : Colors.grey[300],
       appBar: AppBar(
-        title: Text(''),
+        title: Text('Начало работы'),
 
       ),
       body:  Center(
@@ -35,56 +38,52 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
             Container(
               width: 200,
               height: 200,
-              //child: Icon(Icons.android, size: 80, color:  Colors.black),
+              child: Icon(Icons.android, size: 80, color: darkMode ? Colors.white : Colors.black),
               decoration: BoxDecoration(
-                  color: Colors.grey[300],//red[400],
+                  color: darkMode ? Colors.grey[850] : Colors.grey[300],
                   borderRadius: BorderRadius.all(Radius.circular(50)),
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.grey[500],
+                        color: darkMode ? Colors.black54 : Colors.grey[500],
                         offset: Offset(4.0, 4.0),
                         blurRadius: 15.0,
                         spreadRadius: 1.0),
                     BoxShadow(
-                        color: Colors.white,
+                        color: darkMode ? Colors.grey[800] : Colors.white,
                         offset: Offset(-4.0, -4.0),
                         blurRadius: 15.0,
                         spreadRadius: 1.0),
                   ]),
-              child: new FlatButton(onPressed: ()=>onStartButtonTap(context),
-                  child: new Text('Начать\nработу',
-                    style: Theme.of(context).textTheme.body1,))
-
             ),
-//            Row(
-//              mainAxisAlignment: MainAxisAlignment.center,
-//              children: <Widget>[
-//
-//                Padding(
-//                  padding: EdgeInsets.only(top: 50, right: 3),
-//                  child: FlatButton(
-//                    color: Colors.white,
-//                    child: Text('Light', style: TextStyle(color: Colors.black),),
-//                    onPressed: () {
-//                      setState(() {
-//                        darkMode = false;
-//                      });                    },
-//                  ),
-//                ),
-//                Padding(
-//                  padding: EdgeInsets.only(top: 50, left: 3),
-//                  child: FlatButton(
-//                    color: Colors.black,
-//                    child: Text('Dark', style: TextStyle(color: Colors.white),),
-//                    onPressed: () {
-//                      setState(() {
-//                        darkMode = true;
-//                      });
-//                    },
-//                  ),
-//                ),
-//              ],
-//            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+
+                Padding(
+                  padding: EdgeInsets.only(top: 50, right: 3),
+                  child: FlatButton(
+                    color: Colors.white,
+                    child: Text('Light', style: TextStyle(color: Colors.black),),
+                    onPressed: () {
+                      setState(() {
+                        darkMode = false;
+                      });                    },
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 50, left: 3),
+                  child: FlatButton(
+                    color: Colors.black,
+                    child: Text('Dark', style: TextStyle(color: Colors.white),),
+                    onPressed: () {
+                      setState(() {
+                        darkMode = true;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
