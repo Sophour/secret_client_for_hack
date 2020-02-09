@@ -27,12 +27,12 @@ Widget littleCircle(bool highlighted){
       decoration: new BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.redAccent,
+            color: Colors.lightGreen[300],
             blurRadius: 10.0,
             spreadRadius: 4.0,
           ),
         ],
-      color: Colors.red[300],
+      color: Colors.lightGreen[300],
       shape: BoxShape.circle,
   )
   );
@@ -42,7 +42,7 @@ Widget littleCircle(bool highlighted){
         width: 15.0,
         height: 15.0,
         decoration: new BoxDecoration(
-          color: Colors.red[300],
+          color: Colors.lightGreen[300],
           shape: BoxShape.circle,
         )
     );

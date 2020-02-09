@@ -45,7 +45,7 @@ bottomNavigationBar: BottomAppBar(
 
   onTakePhotoButtonTap(BuildContext context){
     //sendPhotoSignalToServer(MainServerUrl);
-    Navigator.pushNamed(context, PreviewPhotoRoute);
+    Navigator.pushNamed(context, LoadingSplashRoute);
   }
 
   sendPhotoSignalToServer(var url) async{

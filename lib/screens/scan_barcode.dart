@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:travel_hack_client/main.dart';
 import 'package:travel_hack_client/elements/progress_widget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 //void main() => runApp(MyApp());
 
@@ -30,9 +31,25 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
         .listen((barcode){
           setState(() {
             allBarcodes.add(barcode);
-            print(barcode);});
-          _showDialog(context, "Коды успешно считаны");
+
+          Fluttertoast.showToast(
+              msg: "Штрихкодов считано: ${allBarcodes.length}",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              //backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
+             print(barcode);});
+            Navigator.pushNamed(context, SuccessSplashRoute);
+          //_showDialog(context, "Коды успешно считаны");
           });
+
+  }
+
+  startBarcodeScanCycle(){
+    allBarcodes = new LinkedHashSet();
 
   }
 
@@ -63,9 +80,23 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", true, ScanMode.BARCODE);
+          "#ff6666", "Дальше", true, ScanMode.BARCODE);
       print(barcodeScanRes);
-      _showDialog(context, "Коды успешно считаны");
+      setState(() {
+        allBarcodes.add(barcodeScanRes);
+      });
+
+      Fluttertoast.showToast(
+          msg: "Штрихкодов считано: ${allBarcodes.length}",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIos: 1,
+          //backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+
+      Navigator.pushNamed(context, SuccessSplashRoute);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -103,8 +134,8 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
                         RaisedButton(
                             onPressed: () => startBarcodeScanStream(allBarcodes),
                             child: Text("Сканировать штрих-коды")),
-                        Text('Scan result : $_scanBarcode\n',
-                            style: TextStyle(fontSize: 20)),
+//                        Text('Scan result : $_scanBarcode\n',
+//                            style: TextStyle(fontSize: 20)),
                       ])
               );
 

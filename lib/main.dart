@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'elements/loading_screen.dart';
 import 'style.dart';
 import 'screens/start_work.dart';
 import 'screens/scan_barcode.dart';
@@ -10,6 +11,8 @@ const StartScreenRoute = '/';
 const ScanBarcodeRoute = '/scan_barcode';
 const TakePhotoRoute = '/take_photo';
 const PreviewPhotoRoute = '/photo_preview';
+const SuccessSplashRoute = '/sucess_splashscreen';
+const LoadingSplashRoute = '/loading_splashscreen';
 
 void main() {
 
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
 
   RouteFactory _routes(){
     return (settings){
-      //final Map<String,dynamic> arguments = settings.arguments;
+      final Map<String,dynamic> arguments = settings.arguments;
       Widget screen;
 
       switch(settings.name){
@@ -49,6 +52,12 @@ class MyApp extends StatelessWidget {
           break;
         case PreviewPhotoRoute:
           screen = PhotoPreview();
+          break;
+        case SuccessSplashRoute:
+          screen = SuccessSplash();
+          break;
+        case LoadingSplashRoute:
+          screen = LoadingSplash();
           break;
         default:
           return null;
