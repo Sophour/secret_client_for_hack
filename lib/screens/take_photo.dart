@@ -16,21 +16,39 @@ class TakePhotoScreen extends StatelessWidget{
         title: Text('Управление фотоаппаратом'),
 
       ),
-      body: new Container(
-        child: new Center(
-          child: new RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.red)
-              ),
-              child: new Text(
-                'Сделать фото',
-                style: Theme.of(context).textTheme.title,),
-              onPressed: ()=>onTakePhotoButtonTap(context),
-          ),
-        ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+                width: 200,
+                height: 200,
+                //child: Icon(Icons.android, size: 80, color:  Colors.black),
+                decoration: BoxDecoration(
+                    color: Colors.grey[300],//red[400],
+                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[500],
+                          offset: Offset(4.0, 4.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0),
+                      BoxShadow(
+                          color: Colors.white,
+                          offset: Offset(-4.0, -4.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0),
+                    ]),
+                child: new FlatButton(onPressed: ()=>onTakePhotoButtonTap(context),
+                    child: new Text('Сделать\nфото',
+                      style: Theme.of(context).textTheme.body1,
+                    textAlign: TextAlign.center,))
 
+            ),
+          ],
         ),
+      ),
+//
 
 bottomNavigationBar: BottomAppBar(
   color: Colors.grey[300],

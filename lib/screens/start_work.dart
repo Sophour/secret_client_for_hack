@@ -18,7 +18,6 @@ class StartScreenWidget extends StatefulWidget {
 
 class _StartScreenWidgetState extends State<StartScreenWidget> {
 
-  //bool darkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,53 +55,11 @@ class _StartScreenWidgetState extends State<StartScreenWidget> {
                     style: Theme.of(context).textTheme.body1,))
 
             ),
-//            Row(
-//              mainAxisAlignment: MainAxisAlignment.center,
-//              children: <Widget>[
-//
-//                Padding(
-//                  padding: EdgeInsets.only(top: 50, right: 3),
-//                  child: FlatButton(
-//                    color: Colors.white,
-//                    child: Text('Light', style: TextStyle(color: Colors.black),),
-//                    onPressed: () {
-//                      setState(() {
-//                        darkMode = false;
-//                      });                    },
-//                  ),
-//                ),
-//                Padding(
-//                  padding: EdgeInsets.only(top: 50, left: 3),
-//                  child: FlatButton(
-//                    color: Colors.black,
-//                    child: Text('Dark', style: TextStyle(color: Colors.white),),
-//                    onPressed: () {
-//                      setState(() {
-//                        darkMode = true;
-//                      });
-//                    },
-//                  ),
-//                ),
-//              ],
-//            ),
           ],
         ),
       ),
 
-//      new Container(
-//        child: new Center(
-//          child: new RaisedButton(
-//              shape: RoundedRectangleBorder(
-//                  borderRadius: new BorderRadius.circular(18.0),
-//                  side: BorderSide(color: Colors.red)
-//              ),
-//              child: new Text(
-//                'Нажмите, чтобы начать работу',
-//                style: Theme.of(context).textTheme.title,),
-//              onPressed: ()=>onStartButtonTap(context)
-//          ),
-//        ),
-//      ),
+
     );
   }
   onStartButtonTap(BuildContext context){

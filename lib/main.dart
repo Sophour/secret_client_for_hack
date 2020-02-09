@@ -12,11 +12,12 @@ const ScanBarcodeRoute = '/scan_barcode';
 const TakePhotoRoute = '/take_photo';
 const PreviewPhotoRoute = '/photo_preview';
 const SuccessSplashRoute = '/sucess_splashscreen';
+const SuccessSplash2Route = '/sucess_splashscreen2';
 const LoadingSplashRoute = '/loading_splashscreen';
 
 void main() {
 
-  const MainServerUrl="";
+  const MainServerUrl="192.168.43.181:8080/"; //TODO
 
   runApp(MyApp());
 }
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
 
   RouteFactory _routes(){
     return (settings){
-      final Map<String,dynamic> arguments = settings.arguments;
+      //final Map<String,dynamic> arguments = settings.arguments;
       Widget screen;
 
       switch(settings.name){
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
           break;
         case LoadingSplashRoute:
           screen = LoadingSplash();
+          break;
+          case SuccessSplash2Route:
+          screen = SuccessSplash2();
           break;
         default:
           return null;

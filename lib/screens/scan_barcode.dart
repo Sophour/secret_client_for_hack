@@ -49,67 +49,47 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
   }
 
   startBarcodeScanCycle(){
-    allBarcodes = new LinkedHashSet();
+
 
   }
 
-  Future<void> scanQR() async {
-    String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Cancel", true, ScanMode.QR);
-      print(barcodeScanRes);
-    } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _scanBarcode = barcodeScanRes;
-    });
-  }
 
   // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> scanBarcodeNormal() async {
-    String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          "#ff6666", "Дальше", true, ScanMode.BARCODE);
-      print(barcodeScanRes);
-      setState(() {
-        allBarcodes.add(barcodeScanRes);
-      });
-
-      Fluttertoast.showToast(
-          msg: "Штрихкодов считано: ${allBarcodes.length}",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIos: 1,
-          //backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
-
-      Navigator.pushNamed(context, SuccessSplashRoute);
-    } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _scanBarcode = barcodeScanRes;
-    });
-  }
+//  Future<void> scanBarcodeNormal() async {
+//    String barcodeScanRes;
+//    // Platform messages may fail, so we use a try/catch PlatformException.
+//    try {
+//      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+//          "#ff6666", "Дальше", true, ScanMode.BARCODE);
+//      print(barcodeScanRes);
+//      setState(() {
+//        allBarcodes.add(barcodeScanRes);
+//      });
+//
+//      Fluttertoast.showToast(
+//          msg: "Штрихкодов считано: ${allBarcodes.length}",
+//          toastLength: Toast.LENGTH_SHORT,
+//          gravity: ToastGravity.BOTTOM,
+//          timeInSecForIos: 1,
+//          //backgroundColor: Colors.red,
+//          textColor: Colors.white,
+//          fontSize: 16.0
+//      );
+//
+//      Navigator.pushNamed(context, SuccessSplashRoute);
+//    } on PlatformException {
+//      barcodeScanRes = 'Failed to get platform version.';
+//    }
+//
+//    // If the widget was removed from the tree while the asynchronous platform
+//    // message was in flight, we want to discard the reply rather than calling
+//    // setState to update our non-existent appearance.
+//    if (!mounted) return;
+//
+//    setState(() {
+//      _scanBarcode = barcodeScanRes;
+//    });
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,25 +99,57 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
           backgroundColor: Colors.grey[300],
             appBar: AppBar(title: const Text('Скан штрих-кода')),
             body: Builder(builder: (BuildContext context) {
-              return Container(
-                  alignment: Alignment.center,
-                  child: Flex(
-                      direction: Axis.vertical,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-//                        RaisedButton(
-//                            onPressed: () => scanBarcodeNormal(),
-//                            child: Text("Start barcode scan")),
-//                        RaisedButton(
-//                            onPressed: () => scanQR(),
-//                            child: Text("Start QR scan")),
-                        RaisedButton(
-                            onPressed: () => startBarcodeScanStream(allBarcodes),
-                            child: Text("Сканировать штрих-коды")),
-//                        Text('Scan result : $_scanBarcode\n',
-//                            style: TextStyle(fontSize: 20)),
-                      ])
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                        width: 200,
+                        height: 200,
+                        //child: Icon(Icons.android, size: 80, color:  Colors.black),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],//red[400],
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey[500],
+                                  offset: Offset(4.0, 4.0),
+                                  blurRadius: 15.0,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.white,
+                                  offset: Offset(-4.0, -4.0),
+                                  blurRadius: 15.0,
+                                  spreadRadius: 1.0),
+                            ]),
+                        child: new FlatButton(onPressed: ()=>startBarcodeScanStream(allBarcodes),
+                            child: new Text('Считать\nштрих-коды',
+                              style: Theme.of(context).textTheme.body1,
+                              textAlign: TextAlign.center,))
+
+                    ),
+                  ],
+                ),
               );
+                //Container(
+//                  alignment: Alignment.center,
+//                  child: Flex(
+//                      direction: Axis.vertical,
+//                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                      children: <Widget>[
+////                        RaisedButton(
+////                            onPressed: () => scanBarcodeNormal(),
+////                            child: Text("Start barcode scan")),
+////                        RaisedButton(
+////                            onPressed: () => scanQR(),
+////                            child: Text("Start QR scan")),
+//                        RaisedButton(
+//                            onPressed: () => startBarcodeScanStream(allBarcodes),
+//                            child: Text("Сканировать штрих-коды")),
+////                        Text('Scan result : $_scanBarcode\n',
+////                            style: TextStyle(fontSize: 20)),
+//                      ])
+//              );
 
             }
 
@@ -192,3 +204,24 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
   }
 
 }
+//
+//  Future<void> scanQR() async {
+//    String barcodeScanRes;
+//    // Platform messages may fail, so we use a try/catch PlatformException.
+//    try {
+//      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+//          "#ff6666", "Cancel", true, ScanMode.QR);
+//      print(barcodeScanRes);
+//    } on PlatformException {
+//      barcodeScanRes = 'Failed to get platform version.';
+//    }
+//
+//    // If the widget was removed from the tree while the asynchronous platform
+//    // message was in flight, we want to discard the reply rather than calling
+//    // setState to update our non-existent appearance.
+//    if (!mounted) return;
+//
+//    setState(() {
+//      _scanBarcode = barcodeScanRes;
+//    });
+//  }
