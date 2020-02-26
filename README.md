@@ -1,6 +1,8 @@
 # travel_hack_client
 
 >20 hours of desperate solo coding starting with almost 0 knowledge about flutter
+Attempt in Soft Design
+The app is kinda remote control for a camera and a printer. Made for Panorama260
 
 ## Getting Started
 
