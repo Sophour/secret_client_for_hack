@@ -1,6 +1,6 @@
 # travel_hack_client
 
-A new Flutter application.
+>20 hours of desperate solo coding starting with almost 0 knowledge about flutter
 
 ## Getting Started
 
